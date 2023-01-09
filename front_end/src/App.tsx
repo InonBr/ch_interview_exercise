@@ -1,9 +1,17 @@
-import NewMsgForm  from "./components/newMsg/NewMsgForm";
+import { Col, Row } from "react-bootstrap";
+import NewMsgForm from "./components/newMsg/NewMsgForm";
 
-function App() {  
+function App() {
   return (
     <div className="App">
-     <NewMsgForm />
+      <Row>
+        <Col>
+          <NewMsgForm />
+        </Col>
+        <Col>
+          <NewMsgForm />
+        </Col>
+      </Row>
     </div>
   );
 }
