@@ -1,7 +1,9 @@
-function App() {
+import NewMsgForm  from "./components/newMsg/NewMsgForm";
+
+function App() {  
   return (
     <div className="App">
-     <h1>hello world</h1>
+     <NewMsgForm />
     </div>
   );
 }
