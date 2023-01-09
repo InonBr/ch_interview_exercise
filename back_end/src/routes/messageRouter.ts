@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import { messageBodySchema } from "../systems/schemas";
 import { ValidationError } from "yup";
+import { sendMsg } from "../systems/twilio";
 
 const msgRouter = Router();
 
@@ -10,6 +11,10 @@ msgRouter.post("/", async (req: Request, res: Response) => {
       abortEarly: false,
       stripUnknown: true,
     });
+
+    const { message, phoneNumber } = msgBody;
+
+    await sendMsg({ message, phoneNumber });
 
     res.send(msgBody);
   } catch (err) {
