@@ -17,7 +17,13 @@ msgRouter.post("/", async (req: Request, res: Response) => {
     await sendMsg({ message, phoneNumber });
 
     res.send(msgBody);
-  } catch (err) {
+  } catch (err: any) {
+    console.error(err);
+
+    if (!(err instanceof ValidationError)) {
+      return res.status(500).json({ msg: err.message });
+    }
+
     const error = err as ValidationError;
     return res.status(422).json({ errors: error.errors });
   }
