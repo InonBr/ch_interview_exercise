@@ -24,7 +24,7 @@ const NewMsgForm = (props: {
 
   const onSubmit = async (data: FieldValues) => {
     const phoneRegex =
-      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+      /^[+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im;
     const { message } = data as { message: string };
 
     setInvalidPhoneNumber(false);
