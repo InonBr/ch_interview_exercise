@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { FieldValues, useForm } from "react-hook-form";
-import "../styles/form.css";
 import PhoneInputField from "./PhoneInput";
 import { createNewMsg } from "../../lib/api";
 import { MessageBodyInterfaceResponse } from "../../lib/apiInterfaces";
+import "../styles/form.css";
 
 const NewMsgForm = (props: {
   setNewMsgResponse: (newMessageResponse: MessageBodyInterfaceResponse) => void;
@@ -50,16 +50,16 @@ const NewMsgForm = (props: {
           </Form.Text>
         )}
       </Form.Group>
-
       <Form.Group className="mt-3">
         <Form.Label htmlFor="message">Text Message</Form.Label>
         <Form.Control
           id="message"
           type="text"
+          as="textarea"
+          rows={9}
           aria-invalid={errors.message ? "true" : "false"}
           {...register("message", { required: true, maxLength: 250 })}
         />
-
         {errors.message && errors.message.type === "required" && (
           <Form.Text className="red-text" role="alert">
             Message is required
@@ -72,7 +72,6 @@ const NewMsgForm = (props: {
           </Form.Text>
         )}
       </Form.Group>
-
       <Button variant="primary" type="submit" className="mt-3">
         Submit message
       </Button>

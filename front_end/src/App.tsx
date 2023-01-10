@@ -11,10 +11,10 @@ function App() {
   return (
     <div className="App">
       <Row>
-        <Col>
+        <Col xs={2}>
           <NewMsgForm setNewMsgResponse={setNewMsgResponse} />
         </Col>
-        <Col>
+        <Col xs={6}>
           <MsgMessengerView newMsgResponse={newMsgResponse} />
         </Col>
       </Row>

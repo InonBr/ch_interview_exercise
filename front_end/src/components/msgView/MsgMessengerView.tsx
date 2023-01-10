@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { MessageBodyInterfaceResponse } from "../../lib/apiInterfaces";
 import { getAllMsgs } from "../../lib/api";
+import MsgBox from "./MsgBox";
+import "../styles/form.css";
 
 const MsgMessengerView = (props: {
   newMsgResponse: MessageBodyInterfaceResponse | undefined;
@@ -13,16 +15,16 @@ const MsgMessengerView = (props: {
     });
 
     if (props.newMsgResponse) {
-      // @ts-ignore
+      // @ts-expect-error - props.newMsgResponse cannot be undefined inside the if statement... ¯\_(ツ)_/¯
       setMsgArr((prev) => [...prev, props.newMsgResponse]);
     }
   }, [props]);
 
   return (
-    <ul>
+    <ul className="ul-list m-5">
       {msgArr.map((msg) => (
-        <li key={msg.id}>
-          {msg.message} {msg.phoneNumber} {new Date(msg.date).toUTCString()}
+        <li key={msg.id} className="mt-3">
+          <MsgBox msg={msg} />
         </li>
       ))}
     </ul>
