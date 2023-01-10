@@ -1,8 +1,8 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import connectDB from "./db/db";
-import msgRouter from "./routes/messageRouter";
+import connectDB from "@systems/dBConnection";
+import msgRouter from "@routes/messageRouter";
 
 dotenv.config();
 
