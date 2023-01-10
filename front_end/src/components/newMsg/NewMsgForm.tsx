@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import "../styles/form.css";
 import PhoneInputField from "./PhoneInput";
 import { createNewMsg } from "../../lib/api";
+import { MessageBodyInterface } from "../../lib/apiInterfaces";
 
-const NewMsgForm = () => {
+const NewMsgForm = (props: {
+  setNewMsgResponse: (newMessageResponse: MessageBodyInterface) => void;
+}) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [invalidPhoneNumber, setInvalidPhoneNumber] = useState(false);
 
@@ -32,6 +35,7 @@ const NewMsgForm = () => {
     }
 
     const newMessageResponse = await createNewMsg({ phoneNumber, message });
+    props.setNewMsgResponse(newMessageResponse);
   };
 
   return (
