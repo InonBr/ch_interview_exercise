@@ -17,3 +17,5 @@ export const createNewMsg = async (newMsgData: {
 
   return { id: _id.toString(), date };
 };
+
+export const getAllMsgs = async () => await MessageData.find({});
