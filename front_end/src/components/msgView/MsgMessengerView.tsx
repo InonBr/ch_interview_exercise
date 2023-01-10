@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { MessageBodyInterface } from "../../lib/apiInterfaces";
+import { MessageBodyInterfaceResponse } from "../../lib/apiInterfaces";
 
 const MsgMessengerView = (props: {
-  newMsgResponse: MessageBodyInterface | undefined;
+  newMsgResponse: MessageBodyInterfaceResponse | undefined;
 }) => {
-  const [msgArr, setMsgArr] = useState<MessageBodyInterface[]>([]);
-
-  console.log(msgArr);
+  const [msgArr, setMsgArr] = useState<MessageBodyInterfaceResponse[]>([]);
 
   useEffect(() => {
     if (props.newMsgResponse) {
@@ -18,8 +16,8 @@ const MsgMessengerView = (props: {
   return (
     <ul>
       {msgArr.map((msg) => (
-        <li key={msg.message}>
-          {msg.message} {msg.phoneNumber}
+        <li key={msg.id}>
+          {msg.message} {msg.phoneNumber} {new Date(msg.date).toUTCString()}
         </li>
       ))}
     </ul>

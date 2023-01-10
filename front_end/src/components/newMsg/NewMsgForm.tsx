@@ -4,10 +4,10 @@ import { FieldValues, useForm } from "react-hook-form";
 import "../styles/form.css";
 import PhoneInputField from "./PhoneInput";
 import { createNewMsg } from "../../lib/api";
-import { MessageBodyInterface } from "../../lib/apiInterfaces";
+import { MessageBodyInterfaceResponse } from "../../lib/apiInterfaces";
 
 const NewMsgForm = (props: {
-  setNewMsgResponse: (newMessageResponse: MessageBodyInterface) => void;
+  setNewMsgResponse: (newMessageResponse: MessageBodyInterfaceResponse) => void;
 }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [invalidPhoneNumber, setInvalidPhoneNumber] = useState(false);
@@ -24,7 +24,7 @@ const NewMsgForm = (props: {
 
   const onSubmit = async (data: FieldValues) => {
     const phoneRegex =
-      /^[+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im;
+      /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im;
     const { message } = data as { message: string };
 
     setInvalidPhoneNumber(false);

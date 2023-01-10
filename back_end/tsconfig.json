@@ -14,7 +14,8 @@
     "baseUrl": "src",
     "paths": {
       "@systems/*": ["systems/*"],
-      "@routes/*": ["routes/*"]
+      "@routes/*": ["routes/*"],
+      "@models/*": ["models/*"]
     }
   },
   "include": ["./src", "./src/**/*.ts"],
