@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MessageBodyInterfaceResponse } from "../../lib/apiInterfaces";
+import { getAllMsgs } from "../../lib/api";
 
 const MsgMessengerView = (props: {
   newMsgResponse: MessageBodyInterfaceResponse | undefined;
@@ -7,6 +8,10 @@ const MsgMessengerView = (props: {
   const [msgArr, setMsgArr] = useState<MessageBodyInterfaceResponse[]>([]);
 
   useEffect(() => {
+    getAllMsgs().then((res: MessageBodyInterfaceResponse[]) => {
+      setMsgArr(res);
+    });
+
     if (props.newMsgResponse) {
       // @ts-ignore
       setMsgArr((prev) => [...prev, props.newMsgResponse]);

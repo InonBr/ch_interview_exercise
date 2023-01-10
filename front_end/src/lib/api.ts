@@ -11,3 +11,8 @@ export const createNewMsg = async (
   await (
     await axios.post(`${baseUrl}`, body)
   ).data;
+
+export const getAllMsgs = async (): Promise<MessageBodyInterfaceResponse[]> =>
+  await (
+    await axios.get(`${baseUrl}`)
+  ).data;
