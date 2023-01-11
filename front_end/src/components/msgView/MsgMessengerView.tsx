@@ -13,10 +13,12 @@ const MsgMessengerView = (props: {
     getAllMsgs().then((res: MessageBodyInterfaceResponse[]) => {
       setMsgArr(res);
     });
+  }, []);
 
-    if (props.newMsgResponse) {
-      // @ts-expect-error - props.newMsgResponse cannot be undefined inside the if statement... ¯\_(ツ)_/¯
-      setMsgArr((prev) => [...prev, props.newMsgResponse]);
+  useEffect(() => {
+    const newMsg = props.newMsgResponse;
+    if (newMsg) {
+      setMsgArr((prev) => [...prev, newMsg]);
     }
   }, [props]);
 
